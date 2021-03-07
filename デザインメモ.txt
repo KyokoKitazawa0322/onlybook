@@ -1,0 +1,179 @@
+中央寄せ
+	.img_area img{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	text-align: center;
+	
+横並びと解除
+画像（background）
+margin/padding
+overflow: hidden;
+継承範囲　
+font-size
+全体サイズ
+viewport 
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+■部品と全体構成でわけるか、すべて共通cssにまとめてよいか
+common.cssではエラーメッセージのみ
+component.cssでボタンなど
+layout.cssでページ構成など
+
+import.cssですべてよみこむ →不要？
+/* default
+----------------------------------------------------------*/
+@import "reset.css";
+@import "layout.css";
+@import "component.css";
+
+
+container - wrapperの類語。容器・入れ物。wrapperはレイアウト的に、containerは意味的に使うことが多い。
+
+
+
+<紀伊國屋>
+■https://www.kinokuniya.co.jp/
+<オンライン書店honya>
+→主■https://www.honyaclub.com/shop/default.aspx
+
+
+
+<紀伊國屋>
+●<body id="two-col">
+<オンライン書店honya>
+//コンテンツ
+●div: class="column-3"  →idに変更
+	
+	※ここでは何も指定せず、中にあるmainのCSSをふりわけるためのもの
+
+viewport    980px
+https://hashimotosan.hatenablog.jp/entry/2020/04/25/124443
+---------------------------------------
+//全体
+body: 
+	body {
+		width: 100%;
+		font-size: 83%;
+		line-height: 1.6;
+		color: #333333;
+	}
+
+---------------------------------------
+//ヘッダーエリア
+●div: header-container
+
+	#header-container {
+	    clear: both;
+	    padding: 0 20px;
+	    /* border-top: 2px solid #004697; */
+	}
+	
+	●div: id="header"
+	
+		#header {
+		    width: 100%;
+		    min-width: 950px;
+		}
+		
+		●p: id="site-logo"
+		
+			#header #site-logo {
+			    float: left;
+			    width: 330px;
+			    padding: 2.2em 0 0 0;
+			}
+			
+			
+		●div: id="header-utility"→不要？
+			
+			#header #header-utility {
+			    float: right;
+			    width: 600px;
+			    padding-bottom: 9px;
+			}
+
+			●div: id="guest-status-container"
+			
+				#header #guest-status-container {
+				    float: right;
+				    width: 390px;
+				    margin-top: 5px;
+				    background: url(/img/usr/header_bg02.gif) 0% 100% no-repeat;
+				}
+				
+				●div: id="guest-status"
+				
+					#header #guest-status-container #guest-status {
+					    padding: 7px 4px 7px 10px;
+					    background: url(/img/usr/header_bg01.gif) 0% 0% no-repeat;
+					    _zoom: 1;
+					    font-size: 94%;
+					}
+
+---------------------------------------
+//検索エリア
+●div: id="search-container"
+	#search-container {
+	    clear: both;
+	    padding: 14px 20px 6px;
+	    background: #eeeeee;
+	    box-shadow: 0 0 6px 0 rgb(0 0 0 / 60%);
+	    _zoom: 1;
+	}
+	
+	●div: id="search"
+		#search {
+		    width: 897px;
+		    margin: 0 auto;
+		    padding-left: 53px;
+		    background: url(../img/usr/search_bg02.gif) 0% 50% no-repeat;
+		}
+
+---------------------------------------
+//コンテンツ
+●div: class="column-3"  →idに変更
+	
+	※ここでは何も指定せず、中にあるmainのCSSをふりわけるためのもの
+
+	●div: id="contents-container"
+
+		#contents-container {
+	    	clear: both;
+	    	margin-top: 18px;
+	    	padding: 0 20px;
+		}
+		
+		●div: id="contents"
+
+			#contents {
+			    position: relative;
+			    width: 100%;
+			    min-width: 950px;
+			}
+---------------------------------------
+//サイドバーエリア
+●div： id="l-nav" class="side"
+	
+	#l-nav {
+    	float: left;
+    	width: 190px;
+    	margin-right: -190px;
+	}
+	
+	
+---------------------------------------
+//メインエリア
+●<div id="main-container">
+
+	#main-container {
+	    float: left;
+	    width: 100%;
+	}
+	
+	●<div id="main">　※カラムに応じて可変（marginでサイドバーエリアのエリア確保）
+
+		.column-3 #main-container #main {
+		    margin: 0 300px 0 210px;
+		}

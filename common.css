@@ -1,0 +1,246 @@
+@charset "UTF-8";
+
+/* リセットcss */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    line-height: 1.4;
+    font-size: inherit;
+}
+
+ol,
+ul {
+    list-style: none;
+    list-style-type: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+.none {
+    display: none;
+}
+
+/*-- 汎用エリア --*/
+/* ボタン */
+
+.btn {
+    color: #fff;
+    background: #009966;
+    padding: 0 16px;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.height-short {
+    height: 32px;
+    line-height: 32px;
+}
+
+.height-middle {
+    height: 36px;
+    line-height: 36px;
+}
+
+/* エラーメッセージ */
+.error-msg {
+    color: red;
+    border: red solid 2px;
+    display: inline-block;
+    /* 親要素のwidthを継承させないためにinline-blockにし、widthを文字数に応じた可変にする */
+    padding: 0 8px;
+}
+
+/* セクションタイトル */
+.section-title {
+    font-size: 26px;
+    font-weight: 500;
+    margin-left: 13px;
+}
+
+/* 横並び(上下中央揃え-複数行テキストも対応) */
+.row {
+    display: table;
+    height: 100%;
+}
+
+.row-item {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.frame {
+    margin: 6px;
+    box-shadow: 0 0 6px 0 #009966;
+    overflow: hidden;
+}
+
+/* 大枠レイアウト */
+
+html {
+    font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", Meiryo, sans-serif;
+    color: #555555;
+}
+
+body {
+    line-height: 1;
+}
+
+/*　ヘッダー */
+#header {
+    width: 100%;
+    min-width: 950px;
+}
+
+/*　ロゴ */
+#header .site-logo-wrap {
+    width: 980px;
+    margin: 0 auto;
+}
+
+#header .site-logo-wrap img {
+    width: 240px;
+    display: block;
+    margin: 0 auto;
+}
+
+#header .site-logo-link {
+    display: block;
+}
+
+/* グローバルナビゲーション */
+#global-nav-container {
+    width: 980px;
+    margin: 0 auto;
+}
+
+#global-nav {
+    box-sizing: content-box;
+    height: 64px;
+    padding: 14px 20px;
+    background: #eeeeee;
+}
+
+/*　検索 */
+
+.search-area {
+    float: left;
+    height: 100%;
+}
+
+.search-area .row-item {
+    height: 100%;
+}
+
+.search-area a {
+    text-decoration: none;
+}
+
+.search-form-area {
+    padding-left: 30px;
+}
+
+.search-form-area .error-msg {
+    margin-top: 6px;
+}
+
+.search-area .search-text {
+    width: 320px;
+    padding: 2px;
+    border: #009966 1px solid;
+}
+
+/*　ユーザステータス */
+#header .user-status-area {
+    float: right;
+}
+
+#header .user-status-area .row-item {
+    text-align: center;
+}
+
+#header .user-status-area .row-item:first-of-type {
+    padding-right: 16px;
+}
+
+#header .user-status-area .row-item:last-of-type {
+    padding-left: 16px;
+}
+
+/*　コンテンツ */
+#contents-container {
+    margin-top: 18px;
+}
+
+#contents {
+    width: 980px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/*　サイドバー */
+#side-container {
+    float: left;
+    width: 200px;
+}
+
+#side {
+    padding: 20px;
+}
+
+#side .list {
+    list-style-type: circle;
+    margin-left: 20px;
+}
+
+#side .list-item {
+    margin-bottom: 20px;
+}
+
+/*　メイン */
+#main .frame {
+    margin-bottom: 40px;
+}
+
+/* 1カラム */
+#column-1 #main-container {
+    width: 100%;
+}
+
+/* 2カラム */
+#column-2 #main-container {
+    float: right;
+    width: 780px;
+}
+
+.book-column-3 {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.book-column-3 .col {
+    display: inline;
+    float: left;
+    width: 30%;
+    margin-right: 3%;
+}
+
+.book-list {
+    overflow: hidden;
+    padding: 10px 40px;
+}
