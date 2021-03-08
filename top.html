@@ -8,6 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="common.css" rel="stylesheet">
     <link href="top.css" rel="stylesheet">
+    <script type="text/javascript">
+        <!--
+        // ▼下層リストの表示・非表示を切り替えるスクリプト
+        function sublist(target) {
+            //選択された<a>の親要素<li>に移動し、その<li>内にある<ul>を表示
+            var TargetList = target.parentNode.getElementsByTagName('ul');
+            if (TargetList[0].style.display == 'none') {
+                TargetList[0].style.display = 'block';
+            } else {
+                TargetList[0].style.display = 'none';
+            }
+        }
+    </script>
 </head>
 
 <body id="top">
@@ -49,11 +62,29 @@
                     <div id="side-container">
                         <div id="side" class="frame">
                             <ul class="list">
-                                <li class="list-item"><a href="">新刊情報</a></li>
-                                <li class="list-item"><a href="">ランキング</a></li>
-                                <li class="list-item"><a href="">コミック</a></li>
-                                <li class="list-item"><a href="">洋書</a></li>
-                                <li class="list-item"><a href="">文庫</a></li>
+                                <li class="list-item main-category-li"><a href="">新刊情報</a></li>
+                                <li class="list-item main-category-li"><a href="">ランキング</a></li>
+                                <li class="list-item main-category-li"><a href="" onclick="sublist(this); return false;">コミック</a>
+                                    <ul style="display: none;" class="sub-category">
+                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ①</a></li>
+                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ②</a></li>
+                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ③</a></li>
+                                    </ul>
+                                </li>
+                                <li class="list-item main-category-li"><a href="" onclick="sublist(this); return false;">洋書</a>
+                                   <ul style="display: none;" class="sub-category">
+                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ①</a></li>
+                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ②</a></li>
+                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ③</a></li>
+                                    </ul>
+                                </li>
+                                <li class="list-item main-category-li"><a href="" onclick="sublist(this); return false;">文庫</a>
+                                    <ul style="display: none;" class="sub-category">
+                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ①</a></li>
+                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ②</a></li>
+                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ③</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -62,106 +93,64 @@
                             <div class="new-book-container frame">
                                 <h1 class="section-title">新刊情報</h1>
                                 <div class="book-list">
-                                    <dl class="book-column-3">
+                                    <div class="book-column-3">
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-title">タイトル</p>
-                                                        <p class="book-release">【2021年03月発売】</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-title">タイトル</p>
+                                                    <p class="book-release">【2021年03月発売】</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-title">タイトル</p>
-                                                        <p class="book-release">【2021年03月発売】</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-title">タイトル</p>
+                                                    <p class="book-release">【2021年03月発売】</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-title">タイトル</p>
-                                                        <p class="book-release">【2021年03月発売】</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-title">タイトル</p>
+                                                    <p class="book-release">【2021年03月発売】</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </dl>
-                                    <dl class="book-column-3">
+                                    </div>
+                                    <div class="book-column-3">
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-title">タイトル</p>
-                                                        <p class="book-release">【2021年03月発売】</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-title">タイトル</p>
+                                                    <p class="book-release">【2021年03月発売】</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-title">タイトル</p>
-                                                        <p class="book-release">【2021年03月発売】</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-title">タイトル</p>
+                                                    <p class="book-release">【2021年03月発売】</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-title">タイトル</p>
-                                                        <p class="book-release">【2021年03月発売】</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-title">タイトル</p>
+                                                    <p class="book-release">【2021年03月発売】</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </dl>
+                                    </div>
                                 </div>
                                 <div class="link-wrap">
                                     <a href="">新着情報一覧へ</a>
@@ -170,106 +159,64 @@
                             <div class="book-rank-container frame">
                                 <h1 class="section-title">ランキング</h1>
                                 <div class="book-list">
-                                    <dl class="book-column-3">
+                                    <div class="book-column-3">
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-rank">1位</p>
-                                                        <p class="book-title">タイトル</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-rank">1位</p>
+                                                    <p class="book-title">タイトル</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-rank">2位</p>
-                                                        <p class="book-title">タイトル</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-rank">1位</p>
+                                                    <p class="book-title">タイトル</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-rank">3位</p>
-                                                        <p class="book-title">タイトル</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-rank">1位</p>
+                                                    <p class="book-title">タイトル</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </dl>
-                                    <dl class="book-column-3">
+                                    </div>
+                                    <div class="book-column-3">
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-rank">4位</p>
-                                                        <p class="book-title">タイトル</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-rank">1位</p>
+                                                    <p class="book-title">タイトル</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-rank">5位</p>
-                                                        <p class="book-title">タイトル</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-rank">1位</p>
+                                                    <p class="book-title">タイトル</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="book-container">
-                                                <p class="book-img">
-                                                    <a href=""><img alt="画像の説明分　１５" src="book.jpg" width="180"></a>
-                                                </p>
-                                                <dl class="item-txt">
-                                                    <dt>
-                                                        <a href=""></a>
-                                                    </dt>
-                                                    <dd>
-                                                        <p class="book-rank">6位</p>
-                                                        <p class="book-title">タイトル</p>
-                                                    </dd>
-                                                </dl>
+                                                <a href="" class="book-img-link"><img alt="画像の説明文" src="book.jpg" class="book-img"></a>
+                                                <div class="item-txt">
+                                                    <p class="book-rank">1位</p>
+                                                    <p class="book-title">タイトル</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </dl>
+                                    </div>
                                 </div>
                                 <div class="link-wrap">
                                     <a href="">ランキング一覧へ</a>

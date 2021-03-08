@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+.book-img-link{
+    display: block
+}
+
+.book-img{
+    width: 180px;
+}
+
 .link-wrap {
     margin: 10px;
 }
