@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>webサイトのタイトル</title>
+    <meta name="description" content="ページの紹介文">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="common.css" rel="stylesheet">
+    <link href="top.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            // 現在日時
+            var current = new Date();
+            var year_val = current.getFullYear() -1;
+            //var month_val = current.getMonth() + 1;
+
+            // プルダウン生成
+            $('#year_pulldown').html('<select name="year">');
+            // 昇順
+            for (var i = 2000; i <= year_val + 1; i++) {
+                $('#year_pulldown select').append('<option value="' + i + '">' + i + '</option>');
+            }
+            $('#year_pulldown select').append('<option value="">' + '----' + '</option>');
+            $('#year_pulldown').append('年');
+            
+            // デフォルト
+            //$('select[name=year] option[value=' + year_val + ']').prop('selected', true);
+            $('select[name=year] option[value=""]').prop('selected', true);
+            
+              //セレクトボックスが切り替わったら発動
+            $('#year_pulldown').change(function() {
+                $('#month_pulldown').html('<select name="month">');
+                for (var i = 1; i <= 12; i++) {
+                    $('#month_pulldown select').append('<option value="' + i + '">' + i + '</option>');
+                }
+                $('#month_pulldown').append('月');
+                // デフォルト
+                //$('select[name=month] option[value=' + month_val + ']').prop('selected', true);
+                $('select[name=month] option[value="1"]').prop('selected', true);
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <span id="year_pulldown"></span>
+    <span id="month_pulldown"></span>
+    
+    <!--              年月プルダウン                  -->
+    <input type="month" name="example">
+    <input type="month" name="example" min="2011-01" max="2013-12">
+</body>
+</html>

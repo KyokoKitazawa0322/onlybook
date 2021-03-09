@@ -9,7 +9,6 @@
     <link href="common.css" rel="stylesheet">
     <link href="top.css" rel="stylesheet">
     <script type="text/javascript">
-        <!--
         // ▼下層リストの表示・非表示を切り替えるスクリプト
         function sublist(target) {
             //選択された<a>の親要素<li>に移動し、その<li>内にある<ul>を表示
@@ -21,72 +20,24 @@
             }
         }
     </script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        //共通パーツ読み込み
+        $(function() {
+            $("#header").load("header.html");
+            $("#side-container").load("categorybar.html");
+        });
+    </script>
 </head>
 
 <body id="top">
     <div id="header-container">
         <div id="header">
-            <div class="site-logo-wrap">
-                <a href="" class="site-logo-link">
-                    <img src="logo.png" alt="onlyBook.com">
-                </a>
-            </div>
-            <div id="global-nav-container">
-                <div id="global-nav" class="frame">
-                    <div class="search-area row">
-                        <div class="search-detail-wap row-item">
-                            <a href="" class="btn height-short">詳細検索</a>
-                        </div>
-                        <div class="search-form-area row-item">
-                            <form action="" method="" class="search-form">
-                                <input class="search-text height-short" type="text" name="XXX" maxlength="70" value="">
-                                <input type="button" value="検索" class="search-btn btn height-short">
-                            </form>
-                            <p class="error-msg">検索キーワードが入力されていません</p>
-                        </div>
-                    </div>
-                    <div class="user-status-area row">
-                        <div class="row-item">
-                            <a href="" class="btn height-middle">新規登録</a>
-                        </div>
-                        <div class="row-item">
-                            <a href="" class="btn height-middle">ログイン</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div id="column-2">
             <div id="contents-container">
                 <div id="contents">
                     <div id="side-container">
-                        <div id="side" class="frame">
-                            <ul class="list">
-                                <li class="list-item main-category-li"><a href="">新刊情報</a></li>
-                                <li class="list-item main-category-li"><a href="">ランキング</a></li>
-                                <li class="list-item main-category-li"><a href="" onclick="sublist(this); return false;">コミック</a>
-                                    <ul style="display: none;" class="sub-category">
-                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ①</a></li>
-                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ②</a></li>
-                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ③</a></li>
-                                    </ul>
-                                </li>
-                                <li class="list-item main-category-li"><a href="" onclick="sublist(this); return false;">洋書</a>
-                                   <ul style="display: none;" class="sub-category">
-                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ①</a></li>
-                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ②</a></li>
-                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ③</a></li>
-                                    </ul>
-                                </li>
-                                <li class="list-item main-category-li"><a href="" onclick="sublist(this); return false;">文庫</a>
-                                    <ul style="display: none;" class="sub-category">
-                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ①</a></li>
-                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ②</a></li>
-                                        <li class="list-item sub-category-li"><a href="">サブカテゴリ③</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                     <div id="main-container">
                         <div id="main">
@@ -228,6 +179,4 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+</body></html>
