@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>webサイトのタイトル</title>
+    <meta name="description" content="ページの紹介文">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="common.css" rel="stylesheet">
+    <link href="top.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+
+年月の値があるかないかでonload時によぶ関数を振り分ける
+//修正
+        //年プルダウン生成
+        function init(){
+            // 現在日時を取得
+            var current = new Date();
+            var year_val = current.getFullYear() -1;
+
+            // プルダウン生成
+            $('#year_pulldown').html('<select name="year">');
+            // 昇順
+            for (var i = 2000; i <= year_val + 1; i++) {
+                $('#year_pulldown select').append('<option value="' + i + '">' + i + '</option>');
+            }
+            $('#year_pulldown select').append('<option value="">' + '----' + '</option>');
+            $('#year_pulldown').append('年');
+        
+            $('select[name=year] option[value=""]').prop('selected', true);
+        }
+
+// 追加
+        function displayResult(year, month){
+
+        //選択された年にselectedを設定
+           // 現在日時を取得
+           var current = new Date();
+            var year_val = current.getFullYear() -1;
+
+            // プルダウン生成
+            $('#year_pulldown').html('<select name="year">');
+            // 昇順
+            for (var i = 2000; i <= year_val + 1; i++) {
+                $('#year_pulldown select').append('<option value="' + i + '">' + i + '</option>');
+            }
+            $('#year_pulldown select').append('<option value="">' + '----' + '</option>');
+            $('#year_pulldown').append('年');
+        
+            $('select[name=year] option[value="' + year + '"]').prop('selected', true);      
+
+
+        //選択された月にselectedを設定
+            $('#month_pulldown').html('<select name="month">');
+                for (var i = 1; i <= 12; i++) {
+                    $('#month_pulldown select').append('<option value="' + i　+ '">' + i + '</option>');
+                }
+                $('#month_pulldown').append('月');
+                $('select[name=month] option[value="'+ month + '"]').prop('selected', true);
+
+        }
+            
+        //セレクトボックスが切り替わったら発動
+        $(function() {
+            $('#year_pulldown').change(function() {
+                $('#month_pulldown').html('<select name="month">');
+                for (var i = 1; i <= 12; i++) {
+                    $('#month_pulldown select').append('<option value="' + i　+ '">' + i + '</option>');
+                }
+                $('#month_pulldown').append('月');
+                // デフォルト
+                //$('select[name=month] option[value=' + month_val + ']').prop('selected', true);
+                $('select[name=month] option[value="1"]').prop('selected', true);
+            });
+        });
+
+//追加
+        //セレクトボックスが切り替わったら発動
+        $('#month_pulldown').change(function() {
+            $('フォームID').submit();
+        });
+
+    </script>
+</head>
+
+<!-- <c:choose>
+    <c:when test="${empty purchaseHistoryForm.year}">
+        <body onload="init()">
+    </c:when>
+    </c:otherwise>
+        <body onload="displayResult(${purchaseHistoryForm.year}, ${purchaseHistoryForm.month})">
+    </c:otherwise>
+</c:choose> -->
+    <!-- <body onload="displayResult(2020, 3)"> -->
+    <body onload="init()">
+    <span id="year_pulldown"></span>
+    <span id="month_pulldown"></span>
+</body>
+</html>

@@ -1,0 +1,208 @@
+修正事項
+==================================================================================================
+1【全体】
+    追加：<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+2【全体】
+    ヘッダー、サイドバーを<div id="header-container">/<div id="side-container">の下に配置
+        <jsp:include page="/WEB-INF/jsp/header.jsp"/>
+        <jsp:include page="/WEB-INF/jsp/categorybar.jsp"/>
+        ※閉じタグ確認
+==================================================================================================
+3【書籍照会】
+    タイトルリンク、画像リンクなくす
+4【書籍照会】
+    プルダウンの最大値を在庫数にする
+        <c:set var="stock" value="${referenceForm.bookInfoBean.stock}"/>
+        <c:choose>
+            <c:when test="${stock > 50}">
+                <c:set var="max" value="${stock}"/>
+            </c:when>
+            <c:otherwise>
+                <c:set var="max" value="50"/>
+            </c:otherwise>
+        </c:choose>
+
+        →${max}をforeachの終了値にいれる
+==================================================================================================
+5【詳細検索】
+    カテゴリ名、サブカテゴリ名を送る
+        ①既存のoptionタグにdata属性を追加する
+            <option value="XXX" data-subcategoryname="サブカテゴリ名をいれる"></option>
+        ②form内にサブカテゴリ送出用のinputタグを追加
+            <input type="hidden" name="subCategoryName" value="" id="subCategoryName">
+        ③サブカテゴリが選択されたときにjsで②のinputタグのvalueにdata属性の値が設定されるようにする
+            $('セレクトタグID').change(function() {
+                var val= $(this).date('subcategoryname');
+                $('subCategoryName').val(val);
+            }
+==================================================================================================
+6【検索結果】
+    並び替え時の送信する値確認(Servletに合わせる)
+        ①リストの渡し方
+        ②actionの渡し方
+        ③sortwordの値確認
+            ※現状、name="action" valueにそれぞれの値がくるようになっている
+7【検索結果】
+    並び替えのプルダウンのselected設定
+        すでに書いてあるので値だけ確認
+8【検索結果】
+　　並び替えのプルダウンが選択されたときのチェンジイベント(form送信)
+        javascriptですでに書いてあるので、値だけ確認
+==================================================================================================
+9【購入履歴】
+　　月プルダウン選択時のチェンジイベント(form送信)
+
+        //セレクトボックスが切り替わったら発動
+        $('#month_pulldown').change(function() {
+            $('フォームID').submit();
+        });
+
+10【購入履歴】
+    formに<input type="hidden" name="action" value="XXX">追加
+
+11【購入履歴】
+    selectedの設定
+    ※そもそも月が返ってくるようになっている？
+    
+    #month_pulldown.html参照
+       
+
+    <!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>webサイトのタイトル</title>
+    <meta name="description" content="ページの紹介文">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="common.css" rel="stylesheet">
+    <link href="top.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+
+年月の値があるかないかでonload時によぶ関数を振り分ける
+//修正
+        //年プルダウン生成
+        function init(){
+            // 現在日時を取得
+            var current = new Date();
+            var year_val = current.getFullYear() -1;
+
+            // プルダウン生成
+            $('#year_pulldown').html('<select name="year">');
+            // 昇順
+            for (var i = 2000; i <= year_val + 1; i++) {
+                $('#year_pulldown select').append('<option value="' + i + '">' + i + '</option>');
+            }
+            $('#year_pulldown select').append('<option value="">' + '----' + '</option>');
+            $('#year_pulldown').append('年');
+        
+            $('select[name=year] option[value=""]').prop('selected', true);
+        }
+
+// 追加
+        function displayResult(year, month){
+
+        //選択された年にselectedを設定
+           // 現在日時を取得
+           var current = new Date();
+            var year_val = current.getFullYear() -1;
+
+            // プルダウン生成
+            $('#year_pulldown').html('<select name="year">');
+            // 昇順
+            for (var i = 2000; i <= year_val + 1; i++) {
+                $('#year_pulldown select').append('<option value="' + i + '">' + i + '</option>');
+            }
+            $('#year_pulldown select').append('<option value="">' + '----' + '</option>');
+            $('#year_pulldown').append('年');
+        
+            $('select[name=year] option[value="' + year + '"]').prop('selected', true);      
+
+
+        //選択された月にselectedを設定
+            $('#month_pulldown').html('<select name="month">');
+                for (var i = 1; i <= 12; i++) {
+                    $('#month_pulldown select').append('<option value="' + i　+ '">' + i + '</option>');
+                }
+                $('#month_pulldown').append('月');
+                $('select[name=month] option[value="'+ month + '"]').prop('selected', true);
+
+        }
+            
+        //セレクトボックスが切り替わったら発動
+        $(function() {
+            $('#year_pulldown').change(function() {
+                $('#month_pulldown').html('<select name="month">');
+                for (var i = 1; i <= 12; i++) {
+                    $('#month_pulldown select').append('<option value="' + i　+ '">' + i + '</option>');
+                }
+                $('#month_pulldown').append('月');
+                // デフォルト
+                //$('select[name=month] option[value=' + month_val + ']').prop('selected', true);
+                $('select[name=month] option[value="1"]').prop('selected', true);
+            });
+        });
+
+//追加
+        //セレクトボックスが切り替わったら発動
+        $('#month_pulldown').change(function() {
+            $('フォームID').submit();
+        });
+
+    </script>
+</head>
+
+<!-- <c:choose>
+    <c:when test="${empty purchaseHistoryForm.year}">
+        <body onload="init()">
+    </c:when>
+    </c:otherwise>
+        <body onload="displayResult(${purchaseHistoryForm.year}, ${purchaseHistoryForm.month})">
+    </c:otherwise>
+</c:choose> -->
+    <!-- <body onload="displayResult(2020, 3)"> -->
+    <body onload="init()">
+    <span id="year_pulldown"></span>
+    <span id="month_pulldown"></span>
+</body>
+</html>
+==================================================================================================
+※JavaScriptが読み込まれる前にDOMがレンダリングされていればエラーにならない、記述場所に注意
+※下記参照
+
+
+つまり、「head要素内」でDOMを扱うプログラムを書いてもエラーにはなりません。（もちろん「body要素内」でもOK）
+
+<head>
+<script>
+    window.onload = function() {
+        var memo = document.getElementById('memo');
+
+        memo.textContent = 'こんにちは！';
+    }
+</script>
+</head>
+<body>
+    <p id="memo"></p>
+</body>
+上記コードは、普通に書くとエラーになりかねませんが、「onloadイベント」を利用することで正常に動作します。
+
+また、「bodyタグ」に直接「onloadイベント」を記述することも可能です！
+
+<head>
+</head>
+
+<!-- bodyにonloadイベントを設定 -->
+<body onload="start()">
+    <p id="memo"></p>
+
+
+    <script>
+        function start() {
+            var memo = document.getElementById('memo');
+
+            memo.textContent = 'こんにちは！';
+        }
+    </script>
+</body>
